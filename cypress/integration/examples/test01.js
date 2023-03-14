@@ -19,14 +19,14 @@ describe('describe',()=>{
 
 
 
-    // it('Orders',function(){
-    //     cy.get('[href="/orders"] > .MuiButtonBase-root').click({force:true})
-    //     cy.get('.merchant_title').should('have.text','Orders')
-    // })
-
-    it('KYC',function(){
-        cy.get('[href="/kyc"] > .MuiButtonBase-root').click({force:true})
+    it('Orders',function(){
+        cy.get('[href="/orders"] > .MuiButtonBase-root').click({force:true})
+        cy.get('.merchant_title').should('have.text','Orders')
     })
+
+    // it('KYC',function(){
+    //     cy.get('[href="/kyc"] > .MuiButtonBase-root').click({force:true})
+    // })
 
     // it('Super Merchants',function(){
     //     cy.get('[href="/supermerchant"] > .MuiButtonBase-root').click({force:true}) 
