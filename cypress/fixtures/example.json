@@ -1,0 +1,17 @@
+  {
+    "logincreds":{
+      "email": "admin@urbanledger.app",
+      "pass": "Pa$$1234"
+    },
+    "merchdata":{
+      "firstname":"firstname",
+      "lastname":"lastname",
+      "businessname":"businessname",
+      "mobileno":"567890204",
+      "buzzemail":"zerotwozerofour@ul.app"
+    }
+  }
+ 
+
+  
+
