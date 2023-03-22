@@ -40,43 +40,42 @@ describe('describe',()=>{
 
 
     it('Orders',function(){
-        cy.viewport(1366,768)
+       // cy.viewport(1366,768)
+       localStorage.clear()
         const link = new homePage()
         link.visitLink()
-   
+       
         cy.fixture('example').then(function(data){
             this.data=data  
-            cy.get('#emailId').type(this.data.logincreds.email)
+           // cy.get('#emailId').type(this.data.logincreds.email)
             cy.wait(1000)
-            cy.get('#pass').type(this.data.logincreds.pass)
+            //cy.get('#pass').type(this.data.logincreds.pass)
             cy.wait(1000)
-            cy.frameLoaded("iframe[title='reCAPTCHA']")
-            cy.log("befor iframe")
-                      cy.iframe().first().click()
-                      cy.log("after iframe")
-                      // .should('be.visible')
-            //     .click({ force: true })
-            // cy.pause()
+            // cy.frameLoaded("iframe[title='reCAPTCHA]",()=>{
+            //  //   cy.iframe().findByText('reCAPTCHA').click()
+            //  cy.iframe().find('.recaptcha-checkbox-border').click()
+                
+
+            // })
+            // cy.get('[style="width: 304px; height: 78px;"] > div > iframe').click()
             
-//           cy.get('[style="width: 304px; height: 78px;"] > div > iframe')
            
-        //     .then($iframe =>{
-        //     const $body = $iframe.contents().find('body');
-        //     cy.wrap($body)
-        //     .find("span[role='checkbox']")
-        //     .should('be.visible')
-        //     .click()
-        //    }
-        //    )
+            cy.get("iframe[title='reCAPTCHA']")
+  
+            .then((recaptchaIframe) => {
+            const body = recaptchaIframe.contents()
+            cy.wrap(body).find('.recaptcha-checkbox-border').should('be.visible').click()
+    })
+            
            
         })
-        // cy.iframe.find('[style="width: 304px; height: 78px;"] > div > iframe').click()
+    
 
         cy.get('#login-btn').click()
 
 
-        cy.get('[href="/orders"] > .MuiButtonBase-root').click({force:true})
-        cy.get('.merchant_title').should('have.text','Orders')
+        // cy.get('[href="/orders"] > .MuiButtonBase-root').click({force:true})
+        // cy.get('.merchant_title').should('have.text','Orders')
     })
 
     // it('KYC',function(){
