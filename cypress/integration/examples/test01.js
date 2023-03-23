@@ -47,9 +47,9 @@ describe('describe',()=>{
        
         cy.fixture('example').then(function(data){
             this.data=data  
-           // cy.get('#emailId').type(this.data.logincreds.email)
+           cy.get('#emailId').type(this.data.logincreds.email)
             cy.wait(1000)
-            //cy.get('#pass').type(this.data.logincreds.pass)
+            cy.get('#pass').type(this.data.logincreds.pass)
             cy.wait(1000)
             // cy.frameLoaded("iframe[title='reCAPTCHA]",()=>{
             //  //   cy.iframe().findByText('reCAPTCHA').click()
@@ -60,12 +60,20 @@ describe('describe',()=>{
             // cy.get('[style="width: 304px; height: 78px;"] > div > iframe').click()
             
            
-            cy.get("iframe[title='reCAPTCHA']")
-  
-            .then((recaptchaIframe) => {
+            cy.get("iframe[title='reCAPTCHA']").then((recaptchaIframe) => {
             const body = recaptchaIframe.contents()
-            cy.wrap(body).find('.recaptcha-checkbox-border').should('be.visible').click()
-    })
+           // const body1 = recaptchaIframe.contents()
+            cy.wrap(body).find('.recaptcha-checkbox-border').click({force:true})
+            cy.wait(1000)
+            cy.get('[style="z-index: 2000000000; position: relative; width: 400px; height: 580px;"]').then((recaptchaIframe1)=>{
+                const body1 = recaptchaIframe1.contents()
+                cy.wrap(body1).find("iframe[title='recaptcha challenge expires in two minutes']").click({force:true});
+            })
+         //   //cy.wrap(body1).find('[title=“Solve the challenge”]').click()
+            
+        })
+        
+       
             
            
         })
