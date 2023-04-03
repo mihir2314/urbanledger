@@ -65,12 +65,15 @@ describe('describe',()=>{
            // const body1 = recaptchaIframe.contents()
             cy.wrap(body).find('.recaptcha-checkbox-border').click({force:true})
             cy.wait(1000)
-            cy.get('[style="z-index: 2000000000; position: relative; width: 400px; height: 580px;"]').then((recaptchaIframe1)=>{
-                const body1 = recaptchaIframe1.contents()
-                cy.wrap(body1).find("iframe[title='recaptcha challenge expires in two minutes']").click({force:true});
-            })
+            
          //   //cy.wrap(body1).find('[title=“Solve the challenge”]').click()
             
+        })
+        cy.get("iframe[title='recaptcha challenge expires in two minutes']").then((recaptchaIframe1)=>{
+            const body1 = recaptchaIframe1.contents()
+            
+           // cy.get('.button-holder help-button-holder').shadow().find('#solver-button').click()
+            cy.wrap(body1).find('.solver-button').click({ includeShadowDom: true })
         })
         
        
